@@ -1,0 +1,169 @@
+{% load static %}
+<aside class="main-sidebar sidebar-dark-success elevation-4">
+	<!-- Brand Logo -->
+	<a href="{% url 'app:dashboard' %}" class="brand-link">
+		<img src="{% static 'img/admin_logo.jpg' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+		<span class="brand-text font-weight-light">Ayuda Sociales</span>
+	</a>
+
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Sidebar user (optional) -->
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				<img src="{{ request.user.get_image }}" class="img-circle elevation-2" alt="User Image">
+			</div>
+			<div class="info">
+				<a href="#" class="d-block"><h5> <strong>{{user}} </strong></h5></a>
+			</div>
+		</div>
+
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+	      <!-- Add icons to the links using the .nav-icon class
+	      	with font-awesome or any other icon font library -->
+	      	<li class="nav-item">
+	      		<a href="{% url 'app:dashboard' %}" class="nav-link active">
+	      			<i class="nav-icon fas fa-tachometer-alt"></i>
+	      			<p>DASHBOARD</p>
+	      		</a>
+	      	</li>
+
+	      	{% if request.user.is_staff %}
+	      		
+	      	<li class="nav-item">
+	      		<a href="{% url 'user:User_lista' %}" class="nav-link active">
+	      			<i class="nav-icon fas fa-user"></i>
+	      			<p>USUARIOS</p>
+	      		</a>
+	      	</li>
+	      		
+	      	<li class="nav-item">
+	      		<a href="#" class="nav-link active">
+	      			<i class="nav-icon fas fa-users"></i>
+	      			<p>
+	      				BASE MISIONES
+	      				<i class="right fas fa-angle-left"></i>
+	      			</p>
+	      		</a>
+	      		<ul class="nav nav-treeview">
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Add_Base_Misiones' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-cash-register"></i>
+	      					<p> Registros de Misiones</p>
+	      				</a>
+	      			</li>
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Lista_Base_Misiones' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-clipboard-list"></i>
+	      					<p>Listados de Misiones</p>
+	      				</a>
+	      			</li>
+	      		</ul>
+	      	</li>
+	      	<li class="nav-item">
+	      		<a href="#" class="nav-link active">
+	      			<i class="nav-icon fas fa-users"></i>
+	      			<p>
+	      				RESPONSABLES
+	      				<i class="right fas fa-angle-left"></i>
+	      			</p>
+	      		</a>
+	      		<ul class="nav nav-treeview">
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Add_Encargados' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-cash-register"></i>
+	      					<p> Registros de Encargados</p>
+	      				</a>
+	      			</li>
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Lista_Encargados' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-clipboard-list"></i>
+	      					<p>Listados de Encargados</p>
+	      				</a>
+	      			</li>
+	      		</ul>
+	      	</li>
+	      	{% endif %}
+    
+	      	<li class="nav-item">
+	      		<a href="#" class="nav-link active">
+	      			<i class="nav-icon fas fa-users"></i>
+	      			<p>
+	      				SOLICITANTES
+	      				<i class="right fas fa-angle-left"></i>
+	      			</p>
+	      		</a>
+	      		<ul class="nav nav-treeview">
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitante:Solicitante_Crear' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-cash-register"></i>
+	      					<p>Registros de Solicitantes</p>
+	      				</a>
+	      			</li>
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitante:Solicitante_Lista' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-clipboard-list"></i>
+	      					<p>Listados de Solicitantes</p>
+	      				</a>
+	      			</li>
+	      		</ul>
+	      	</li>
+
+	      	<li class="nav-item">
+	      		<a href="#" class="nav-link active">
+	      			<i class="nav-icon fas fa-cogs"></i>
+	      			<p>
+	      				GESTIONAR
+	      				<i class="right fas fa-angle-left"></i>
+	      			</p>
+	      		</a>
+	      		<ul class="nav nav-treeview">
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:base' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-hands-helping"></i>
+	      					<p>Solicitude</p>
+	      				</a>
+	      			</li>
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Categorias_lista' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-cash-register"></i>
+	      					<p>Tipos de Ayuda</p>
+	      				</a>
+	      			</li>
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Solicitudes_crear' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-cash-register"></i>
+	      					<p>Registros de Solicitudes</p>
+	      				</a>
+	      			</li>
+
+	      			<li class="nav-item">
+	      				<a href="{% url 'solicitud:Solicitudes_lista' %}" class="nav-link">
+	      					<i class="nav-icon fas fa-clipboard-list"></i>
+	      					<p>Listados de Solicitudes</p>
+	      				</a>
+	      			</li>
+	      		</ul>
+	      	</li>
+
+	      	{% if request.user.is_staff %}
+
+	      	<li class="nav-item">
+	      		<a href="{% url 'reporte:sale_report' %}" class="nav-link active">
+	      			<i class="nav-icon fas fa-file-download"></i>
+	      			<p>REPORTES</p>
+	      		</a>
+	      	</li>
+	      	<li class="nav-item">
+	      		<a href="{% url 'reporte:reportes_base_Misiones' %}" class="nav-link active">
+	      			<i class="nav-icon fas fa-file-download"></i>
+	      			<p>REPORTES DE MISIONES</p>
+	      		</a>
+	      	</li>	      
+	      	{% endif %}
+      	</nav>
+      <!-- /.sidebar-menu -->
+  	</div>
+</aside>

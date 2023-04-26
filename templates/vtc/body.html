@@ -1,0 +1,82 @@
+{% extends "home.html" %}
+{% load static %}
+{% block body %}
+	<body class="hold-transition sidebar-mini layout-fixed">
+		<div class="preloader flex-column justify-content-center align-items-center">
+			<img class="animation__shake" src="{% static 'img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		<!-- Site wrapper -->
+		<div class="wrapper">
+			<!-- Navbar -->
+			{% include 'vtc/header.html' %}
+			<!-- /.navbar -->
+
+			<!-- Main Sidebar Container -->
+			{% include 'vtc/sidevar.html' %}
+			<!-- /.sidebar -->
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h5 class="m-0 text-dark"> Bienvenido <small> <strong>
+									{{ request.user.get_full_name }}
+								</strong></small></h5>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item"><a href="{% url 'app:dashboard' %}">Home / {{ url }}</a></li> 
+								</ol>
+							</div>
+						</div>
+					</div><!-- /.container-fluid -->
+				</section>
+
+				{% block content %}
+				    
+				{% endblock content %}
+
+			</div>
+			<!-- /.content-wrapper -->
+
+			{% include 'fooder.html' %}
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+				
+			</aside>
+		<!-- /.control-sidebar -->
+
+		</div>
+		<!-- Block javascript -->
+		{% block java %}
+
+		<script>
+	        {% if messages %}
+	            var html = '<p>';
+	            {% for message in messages %}
+	                html += '{{ message }}<br>';
+	            {% endfor %}
+	            html += '</p>';
+	            Swal.fire({
+	                title: 'Error!',
+	                html: html,
+	                icon: 'error',
+	                timer: 2000,
+
+	                onClose: () => {
+	                	location.href = '{{ list_url }}';
+	                }
+	            });
+	            {% endif %}
+		</script>
+
+		{% endblock java%}
+
+	</body>
+{% endblock body %}
+	

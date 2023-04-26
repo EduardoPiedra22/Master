@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+	<div class="container">
+		<div class="row m-4">
+			<div class="col-lg-12 col-12 ">
+				<!-- small card -->
+				<a class="small-box bg-white callout callout-success mb-4" href='{% url "solicitud:Solicitudes_lista" %}'>
+					<div class="inner">
+						<h3>Lista de Solicitudes</h3>
+						<p>La Solicitud de ayuda se conforman por una categoria y un solicitante.</p>
+
+					</div>
+					<div class="icon">
+						<i class="fas fa-shopping-cart"></i>
+					</div>
+				</a>
+			</div>
+			<!-- ./col -->
+			<div class="col-lg-12 col-12">
+				<!-- small card -->
+				<a href="{% url 'solicitante:Solicitante_Lista' %}" class="small-box bg-white callout callout-success mb-4">
+					<div class="inner">
+						<h3>Lista de Solicitantes</h3>
+
+						<p>Solicitantes</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-user-plus"></i>
+					</div>
+				</a>
+			</div>
+			<!-- ./col -->
+			<div class="col-lg-12 col-12">
+				<!-- small card -->
+				<a href="{% url 'reporte:sale_report' %}"class="small-box bg-white callout callout-success mb-4">
+					<div class="inner">
+						<h3>Exportar reportes</h3>
+
+						<p>reportes</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-chart-pie"></i>
+					</div>
+				</a>
+			</div>
+
+		</div>
+		
+	</div>
+
+{% endblock content %}
